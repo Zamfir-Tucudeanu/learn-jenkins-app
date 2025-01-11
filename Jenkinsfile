@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        NETFLIFY_SITE_ID = 'something'
+        NETFLIFY_AUTH_TOKEN = credentials('auth-token')
+    }
+
     stages {
         stage('Build') {
             agent{
@@ -55,11 +60,11 @@ pipeline {
                         '''
                     }
 
-                    post {
-                        always {
-                            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, KeepAll: false, reportDir: 'public'])
-                        }
-                    }
+                    #post {
+                    #    always {
+                    #        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, KeepAll: false, reportDir: 'public'])
+                    #    }
+                    #}
                 }
             }
         }
@@ -76,6 +81,9 @@ pipeline {
                 sh '''
                  npm install netlify-cli
                  node_modules/.bin/netlify --version
+                 echo "Deploying to production. Site ID: $NETFLIFY_SITE_ID"
+                 node_modules/.bin/netlify status
+                 node_modules/.bin/netlify deploy --dir=build --prod
                '''
             }
         }
