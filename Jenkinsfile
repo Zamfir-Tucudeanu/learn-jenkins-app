@@ -60,11 +60,11 @@ pipeline {
                         '''
                     }
 
-                    #post {
-                    #    always {
-                    #        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, KeepAll: false, reportDir: 'public'])
-                    #    }
-                    #}
+                    //post {
+                    //    always {
+                    //        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, KeepAll: false, reportDir: 'public'])
+                    //    }
+                    //}
                 }
             }
         }
