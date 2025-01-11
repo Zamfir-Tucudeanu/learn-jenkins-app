@@ -49,7 +49,16 @@ pipeline {
                         sh '''
                         npm install serve
                         node_modules/.bin/serve --version
+                        node_modules/.bin/serve -s build &
+                        sleep 10
+                        npx playwright test --reporter=html
                         '''
+                    }
+
+                    post {
+                        always {
+                            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, KeepAll: false, reportDir: 'public'])
+                        }
                     }
                 }
             }
