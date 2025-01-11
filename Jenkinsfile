@@ -65,6 +65,11 @@ pipeline {
                     //        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, KeepAll: false, reportDir: 'public'])
                     //    }
                     //}
+                    //post {
+                    //    always {
+                    //        junit 'test-results/junit.xml'
+                    //    }
+                    //}
                 }
             }
         }
@@ -90,9 +95,5 @@ pipeline {
             }
         }
     }
-    //post {
-    //    always {
-    //        junit 'test-results/junit.xml'
-    //    }
-    //}
+
 }
