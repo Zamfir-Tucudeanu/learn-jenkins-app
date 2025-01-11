@@ -89,7 +89,7 @@ pipeline {
                  echo "Deploying to production. Site ID: $NETFLIFY_SITE_ID"
                  echo "Logging in..."
                  node_modules/.bin/netlify login
-                 node_modules/.bin/netlify status --verbose
+                 #node_modules/.bin/netlify status --verbose
                  node_modules/.bin/netlify deploy --dir=build --prod
                '''
             }
